@@ -16,10 +16,13 @@
                     //Create vid node
                     var vid_node = document.createElement('video');
                     var src_node = document.createElement('source');
-                    src_node.setAttribute('src',L);
+                    src_node.setAttribute('src',L.id);
                     src_node.setAttribute('type','video/mp4');
                     vid_node.appendChild(src_node);
                     vid_node.setAttribute('controls','');
+                    var name = document.createElement("p");  // Create with DOM
+                    name.innerHTML = L.name.replace('.mp4','');
+                    E.appendChild(name)
                     E.appendChild(vid_node);
                     $('#vidcollection').append(E);
                 }

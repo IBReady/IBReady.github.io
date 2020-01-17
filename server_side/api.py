@@ -50,7 +50,7 @@ class Handler(BaseHTTPRequestHandler):
         links = []
         for vid in videos:
             SERVICE.permissions().create(body={"role":"reader", "type":"anyone"}, fileId=vid['id']).execute()
-            links.append('https://drive.google.com/uc?export=download&id='+vid['id'])
+            links.append({'id':'https://drive.google.com/uc?export=download&id='+vid['id'],'name':vid['name']})
         
         r = {'links':links}
 
