@@ -41,6 +41,7 @@ class Handler(BaseHTTPRequestHandler):
         folder_id = '1EH5AmEtk9RNVxgj7B-pLoKzz_3PkzNDP'
         results = SERVICE.files().list(q="mimeType='video/mp4' and trashed = false",fields="nextPageToken, files(id, name, parents)",pageSize=400).execute()
         videos = []
+        for f in results['files']:
             try:
                 if folder_id in f['parents']:
                     videos.append(f)
