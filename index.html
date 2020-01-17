@@ -3,5 +3,16 @@
     <head>
         <title>IB Ready</title>
         <link rel='stylesheet' href='style/main.css'>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+            function log(data) {
+                console.log(data.links);
+            };
+            function refresh() {
+                $.getJSON('https://localhost:8000')
+            };
+        </script>
     </head>
+    <body onload="refresh();">
+    </body>
 </html>

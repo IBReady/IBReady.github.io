@@ -52,6 +52,14 @@ class Handler(BaseHTTPRequestHandler):
             SERVICE.permissions().create(body={"role":"reader", "type":"anyone"}, fileId=vid['id']).execute()
             links.append('https://drive.google.com/uc?export=download&id='+vid['id'])
         
+        r = {'links':links}
+
+        self.send_response(200)
+        self.send_header('Content-type', 'application/json')
+        self.send_header('Access-Control-Allow-Origin','*')
+        self.end_headers()
+        self.wfile.write(bytes(json.dumps(r),'utf-8'))
+    
 
 
 server = HTTPServer(('localhost',8000),Handler)
@@ -60,5 +68,6 @@ s_t.start()
 
 r = requests.get('http://localhost:8000/test/test')
 print(r.status_code)
+print(r.json())
 while True:
     pass
