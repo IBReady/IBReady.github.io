@@ -8,11 +8,31 @@
             function log(data) {
                 console.log(data.links[0]);
             };
+            function update(data) {
+                for (var link=0;link<data.links.length;link++){
+                    var L = data.links[link];
+                    var E = document.createElement('div');
+
+                    //Create vid node
+                    var vid_node = document.createElement('video');
+                    var src_node = document.createElement('source');
+                    src_node.setAttribute('src',L);
+                    src_node.setAttribute('type','video/mp4');
+                    vid_node.appendChild(src_node);
+                    vid_node.setAttribute('controls','');
+                    E.appendChild(vid_node);
+                    $('#vidcollection').append(E);
+                }
+            };
             function refresh() {
-                $.getJSON('http://localhost:8000',log);
+                $.getJSON('http://localhost:8000',update);
             };
         </script>
     </head>
     <body onload="refresh();">
+        <div id='nav'></div>
+        <div id='vidcollection'>
+
+        </div>
     </body>
 </html>
