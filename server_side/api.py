@@ -47,7 +47,11 @@ class Handler(BaseHTTPRequestHandler):
                     videos.append(f)
             except KeyError:
                 pass
-        print(videos)
+        links = []
+        for vid in videos:
+            SERVICE.permissions().create(body={"role":"reader", "type":"anyone"}, fileId=vid['id']).execute()
+            links.append('https://drive.google.com/uc?export=download&id='+vid['id'])
+        
 
 
 server = HTTPServer(('localhost',8000),Handler)
