@@ -6,10 +6,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script>
             function log(data) {
-                console.log(data.links);
+                console.log(data.links[0]);
             };
             function refresh() {
-                $.getJSON('https://localhost:8000')
+                $.getJSON('http://localhost:8000',log);
             };
         </script>
     </head>
