@@ -11,22 +11,26 @@
                 console.log(data.links[0]);
             };
             function update(data) {
-                for (var link=0;link<data.links.length;link++){
+                $('#vidcollection').empty();
+                for (var link=0;link<data.links.length;link++) {
                     var L = data.links[link];
-                    var E = document.createElement('div');
+                    if ($('#search').val() == "" || L.name.includes($('#search').val())) {
+                        var E = document.createElement('div');
 
-                    //Create vid node
-                    var vid_node = document.createElement('video');
-                    var src_node = document.createElement('source');
-                    src_node.setAttribute('src',L.id);
-                    src_node.setAttribute('type','video/mp4');
-                    vid_node.appendChild(src_node);
-                    vid_node.setAttribute('controls','');
-                    var name = document.createElement("p");  // Create with DOM
-                    name.innerHTML = L.name.replace('.mp4','');
-                    E.appendChild(name)
-                    E.appendChild(vid_node);
-                    $('#vidcollection').append(E);
+                        //Create vid node
+                        var vid_node = document.createElement('video');
+                        var src_node = document.createElement('source');
+                        E.className = 'vidbox';
+                        src_node.setAttribute('src',L.id);
+                        src_node.setAttribute('type','video/mp4');
+                        vid_node.appendChild(src_node);
+                        vid_node.setAttribute('controls','');
+                        var name = document.createElement("p");
+                        name.innerHTML = L.name.replace('.mp4','');
+                        E.appendChild(name)
+                        E.appendChild(vid_node);
+                        $('#vidcollection').append(E);
+                    }
                 }
             };
             function refresh() {
@@ -42,8 +46,8 @@
             <a href="#about">About</a>
         </div>
         <div id='actionnav'>
-            <input id='search' placeholder="Search...">
-            <button id='refresh' onclick="refresh();">Refresh</button>
+            <input id='search' placeholder="Search..." onchange="refresh()">
+            <button id='refresh' onclick="refresh()">Refresh</button>
         </div>
         <div id='vidcollection'>
 

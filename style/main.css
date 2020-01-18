@@ -29,6 +29,7 @@ html {
     padding: 0px;
     margin: 0px;
     font-family: 'Roboto';
+    overflow: hidden;
 }
 
 #search {
@@ -41,7 +42,10 @@ html {
     font-family: 'Roboto';
     font-size: 0.97em;
     border-width: 0px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
+
 #refresh {
     font-size: 0.97em;
     width: 100%;
@@ -54,11 +58,49 @@ html {
     border-style: none;
     font-family: 'Roboto';
     position: relative;
-    
-    
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: background-color 0.1s;
 }
+
+#refresh:hover {
+    background-color: rgb(141, 141, 141);
+}
+
 #actionnav {
     padding: 0.25%;
     background-color: rgb(39, 39, 39);
     display: flex;
+    height: 5.2vh;
+}
+
+#vidcollection {
+    height: 90.5vh;
+    overflow: scroll;
+    background-color: rgb(230, 230, 230);
+}
+
+#vidcollection::-webkit-scrollbar { width: 0 !important }
+
+.vidbox {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: rgb(206, 206, 206);
+    width: auto;
+    display: inline-block;
+    text-align: center;
+    border-width: 2px;
+    border-color: rgb(184, 184, 184);
+    border-style: solid;
+}
+
+.vidbox p {
+    width: auto;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.vidbox video {
+    width: auto
 }
